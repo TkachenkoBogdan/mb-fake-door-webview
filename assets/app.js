@@ -5,6 +5,8 @@
  *   route      /fake-doors/<featureId>          (also accepts ?featureId=)
  *   content    looked up by featureId, unknown id -> error screen
  *   CTA        bridge.send('fakeDoorCTAclick', { featureId })
+ *
+ * The close control is native chrome, so the page never draws one.
  *   analytics  bridge.sendAnalyticsEvent(name, params)
  *   native in  window.navigateNext / window.navigatePrev
  */
@@ -87,7 +89,6 @@
     window.fakeDoorBridge = bridge;
 
     var CTA_EVENT = 'fakeDoorCTAclick';
-    var CLOSE_EVENT = 'fakeDoorClose';
 
     // --- content -----------------------------------------------------------
 
@@ -207,20 +208,6 @@
 
     function renderPage(root, featureId, content) {
         var base = assetBase();
-
-        var topbar = el('div', 'topbar');
-        var close = el('button', 'close');
-        close.type = 'button';
-        close.setAttribute('aria-label', 'Close');
-        close.innerHTML =
-            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-            '<path d="M6 6L18 18M18 6L6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>' +
-            '</svg>';
-        close.addEventListener('click', function () {
-            bridge.send(CLOSE_EVENT, { featureId: featureId });
-        });
-        topbar.appendChild(close);
-        root.appendChild(topbar);
 
         var glowLayer = el('div', 'glow-layer');
         glowLayer.appendChild(el('div', 'glow glow--top'));

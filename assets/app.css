@@ -65,37 +65,6 @@ body {
     top: 990px;
 }
 
-.topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    display: flex;
-    justify-content: flex-end;
-    padding: env(safe-area-inset-top, 0px) 16px 10px;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-}
-
-.close {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    color: var(--text-primary);
-    cursor: pointer;
-    opacity: 0.96;
-}
-
-.close:active {
-    opacity: 0.6;
-}
-
 main {
     position: relative;
     z-index: 1;
@@ -104,9 +73,7 @@ main {
     align-items: center;
     gap: 48px;
     width: 100%;
-    max-width: 375px;
-    margin: 0 auto;
-    padding: calc(56px + env(safe-area-inset-top, 0px)) 0 calc(48px + env(safe-area-inset-bottom, 0px));
+    padding: 16px 0 calc(48px + env(safe-area-inset-bottom, 0px));
 }
 
 /* ---- hero ---- */

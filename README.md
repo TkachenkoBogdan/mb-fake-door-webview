@@ -11,13 +11,13 @@ It keeps the contract of the real page on
 | Route | `/fake-doors/<featureId>` — `nutrition`, `fitness` (`stretching` aliases to `fitness`); `?featureId=` also works |
 | Unknown id | Error screen with a retry button |
 | CTA | `bridge.send("fakeDoorCTAclick", { featureId })` |
-| Close (✕) | `bridge.send("fakeDoorClose", { featureId })` — new, the original page had no close control |
 | Bridge | iOS `webkit.messageHandlers.nativeBridge`, Android `window.AndroidBridge`, else `console.log` |
 | Analytics | `bridge.sendAnalyticsEvent(name, params)` |
 | Native → JS | `window.navigateNext` / `window.navigatePrev` |
 | Theme | Same CSS custom properties the real bundle sets at boot |
 
 Copy is inlined rather than loaded from i18n — this is a test page.
+The close control is native chrome, so the page never draws one.
 
 ## Layout
 
