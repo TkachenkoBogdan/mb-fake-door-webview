@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Muscle Booster Web Views</title>
+        <script>
+            // Runs before the app bundle to avoid a flash of collapsed 100vh content
+            // on WebViews (Android in particular) that report a wrong height on first paint.
+            document.documentElement.style.setProperty('--app-vh', window.innerHeight * 0.01 + 'px');
+        </script>
+        <link rel="stylesheet" href="../../assets/app.css" />
+    </head>
+    <body data-feature-id="fitness">
+        <div id="root"></div>
+        <script src="../../assets/app.js"></script>
+    </body>
+</html>

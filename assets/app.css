@@ -1,0 +1,319 @@
+/* Fake door offer page — "01 web full" design.
+   Tokens mirror the ones the real web-views bundle sets at boot. */
+
+:root {
+    --color-white: #ffffff;
+    --color-secondary: #bababa;
+    --color-primary: #121212;
+    --accent-color-brand: #1044ff;
+    --background-color-highlighted: rgba(255, 255, 255, 0.06);
+
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --color-lime: #dbf673;
+    --button-fg: #10359f;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--color-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 22px;
+    overflow-x: hidden;
+}
+
+/* The two blurred brand-blue circles behind everything (Figma: r236 #1044FF, 300px blur). */
+.glow {
+    position: fixed;
+    left: 50%;
+    width: 472px;
+    height: 472px;
+    margin-left: -236px;
+    border-radius: 50%;
+    background: var(--accent-color-brand);
+    filter: blur(150px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow--top {
+    top: -106px;
+}
+
+.glow--bottom {
+    top: 990px;
+}
+
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: flex-end;
+    padding: env(safe-area-inset-top, 0px) 16px 10px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    opacity: 0.96;
+}
+
+.close:active {
+    opacity: 0.6;
+}
+
+main {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+    max-width: 375px;
+    margin: 0 auto;
+    padding: calc(56px + env(safe-area-inset-top, 0px)) 0 calc(48px + env(safe-area-inset-bottom, 0px));
+}
+
+/* ---- hero ---- */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.hero__images {
+    position: relative;
+    width: 253px;
+    height: 161px;
+}
+
+.hero__images img {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 28px;
+    box-shadow: 1.75px 1.75px 36px 0 rgba(255, 255, 255, 0.25);
+}
+
+.hero__images img:first-child {
+    left: 0;
+    top: 14px;
+    transform: rotate(-8.8deg);
+}
+
+.hero__images img:last-child {
+    left: 109px;
+    top: 5px;
+    transform: rotate(5.96deg);
+}
+
+.hero__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 0 16px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: 600;
+}
+
+.hero__subtitle {
+    margin: 0;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--text-secondary);
+}
+
+/* ---- sections ---- */
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+    padding: 0 16px;
+}
+
+h2 {
+    margin: 0;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+}
+
+.rows {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.value-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.value-row__dot {
+    flex: none;
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--color-lime);
+}
+
+.value-row__title {
+    margin: 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.value-row__subtitle {
+    margin: 0;
+    font-size: 13px;
+    line-height: 20px;
+    color: var(--text-muted);
+}
+
+.step-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.step-row__num {
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+    background: var(--background-color-highlighted);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.step-row__text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 22px;
+}
+
+/* ---- closing block + CTA ---- */
+
+.closing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.closing__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 0 16px;
+    text-align: center;
+}
+
+.closing__title {
+    margin: 0;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.closing__subtitle {
+    margin: 0;
+    font-size: 15px;
+    line-height: 22px;
+    color: var(--text-secondary);
+}
+
+.cta {
+    width: 240px;
+    height: 48px;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 12px;
+    background: var(--color-white);
+    color: var(--button-fg);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cta:active {
+    opacity: 0.8;
+}
+
+/* ---- error state (unknown featureId) ---- */
+
+.error {
+    gap: 12px;
+    justify-content: center;
+    min-height: 100vh;
+    min-height: calc(var(--app-vh, 1vh) * 100);
+    text-align: center;
+}
+
+.error p {
+    margin: 0;
+    padding: 0 32px;
+}
+
+.error__message {
+    color: var(--text-secondary);
+}
+a { text-decoration: none; color: inherit; }
