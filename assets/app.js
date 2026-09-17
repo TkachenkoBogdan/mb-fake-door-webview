@@ -9,6 +9,7 @@
  * The close control is native chrome, so the page never draws one.
  *   analytics  bridge.sendAnalyticsEvent(name, params)
  *   native in  window.navigateNext / window.navigatePrev
+ *              window.setSafeAreaInsets({ top, right, bottom, left }) — optional
  */
 
 (function () {
@@ -87,6 +88,22 @@
     };
 
     window.fakeDoorBridge = bridge;
+
+    /*
+     * Escape hatch for platforms that report no CSS safe area.
+     * iOS needs nothing: viewport-fit=cover plus the web view's
+     * contentInsetAdjustmentBehavior = .never make env(safe-area-inset-*)
+     * resolve on their own, and the CSS falls back to those. Native may call
+     * this at any time (values in CSS pixels) to override them.
+     */
+    window.setSafeAreaInsets = function (insets) {
+        insets = insets || {};
+        ['top', 'right', 'bottom', 'left'].forEach(function (side) {
+            var value = insets[side];
+            if (typeof value !== 'number') return;
+            document.documentElement.style.setProperty('--safe-' + side, value + 'px');
+        });
+    };
 
     var CTA_EVENT = 'fakeDoorCTAclick';
 
