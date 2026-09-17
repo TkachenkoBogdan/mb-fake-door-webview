@@ -98,7 +98,7 @@
 
     var CONTENT = {
         nutrition: {
-            images: ['nutrition-a.png', 'nutrition-b.png'],
+            images: ['nutrition-b.png', 'nutrition-a.png'],
             title: 'Get a nutrition plan built for your goal',
             description: 'Personalized meals, clear targets, and a plan that actually fits your life.',
             button: 'Notify me',
@@ -120,7 +120,7 @@
         },
 
         fitness: {
-            images: ['fitness-a.png', 'fitness-b.png'],
+            images: ['fitness-b.png', 'fitness-a.png'],
             title: 'Get your first split before New Year',
             description: "A guided flexibility journey built around your goal — see if it's the right challenge for you.",
             button: 'Notify me',
@@ -222,8 +222,10 @@
         topbar.appendChild(close);
         root.appendChild(topbar);
 
-        root.appendChild(el('div', 'glow glow--top'));
-        root.appendChild(el('div', 'glow glow--bottom'));
+        var glowLayer = el('div', 'glow-layer');
+        glowLayer.appendChild(el('div', 'glow glow--top'));
+        glowLayer.appendChild(el('div', 'glow glow--bottom'));
+        root.appendChild(glowLayer);
 
         var main = el('main');
 

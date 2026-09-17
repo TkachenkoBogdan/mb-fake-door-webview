@@ -24,6 +24,7 @@ html,
 body {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 body {
@@ -35,9 +36,18 @@ body {
     overflow-x: hidden;
 }
 
-/* The two blurred brand-blue circles behind everything (Figma: r236 #1044FF, 300px blur). */
-.glow {
+/* The two blurred brand-blue circles behind everything (Figma: r236 #1044FF, 300px blur).
+   They live in a clipped fixed layer so they can't widen the document. */
+.glow-layer {
     position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow {
+    position: absolute;
     left: 50%;
     width: 472px;
     height: 472px;
@@ -45,8 +55,6 @@ body {
     border-radius: 50%;
     background: var(--accent-color-brand);
     filter: blur(150px);
-    pointer-events: none;
-    z-index: 0;
 }
 
 .glow--top {
